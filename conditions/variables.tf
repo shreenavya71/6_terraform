@@ -1,50 +1,48 @@
 variable "ami_id" {
-    type        = string
-    default     = "ami-09c813fb71547fc4f"
-    description = "This is RHEL9 AMI ID"
+  type        = string
+  default     = "ami-09c813fb71547fc4f"
+  description = "This is RHEL9 AMI ID"
+}
+
+variable "environment" {
+    default = "prod"
 }
 
 variable "instance_type" {
-    type    = string
     default = "t3.micro"
-
 }
 
 variable "ec2_tags" {
     type = map
     default = {
-        Project     = "Expense"
-        Component   = "Backend"
+        Project = "expense"
+        Component = "backend"
         Environment = "dev"
-        Name        = "Expense-backend-dev"
+        Name = "expense-backend-dev"
     }
 }
 
 variable "from_port" {
-    type    = number
+    type = number
     default = 22
 }
 
 variable "to_port" {
-    type    = number
+    type = number
     default = 22
 }
 
 variable "cidr_blocks" {
-    type    = list(string)
+    type = list(string)
     default = ["0.0.0.0/0"]
 }
 
 variable "sg_tags" {
     type = map
     default = {
-    Name = "expense-backend-dev-sg"
-    }  
+        Name = "expense-backend-dev"
+    }
 }
-
-
-
-
 /* 
 1. command line --> -var "<var-name>=<var-value>"
 2. tfvars
